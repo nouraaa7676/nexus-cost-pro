@@ -13,6 +13,7 @@ import { Route as RequestsRouteImport } from './routes/requests'
 import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as NewRequestRouteImport } from './routes/new-request'
 import { Route as ApprovalsRouteImport } from './routes/approvals'
+import { Route as AiAssistantRouteImport } from './routes/ai-assistant'
 import { Route as IndexRouteImport } from './routes/index'
 
 const RequestsRoute = RequestsRouteImport.update({
@@ -35,6 +36,11 @@ const ApprovalsRoute = ApprovalsRouteImport.update({
   path: '/approvals',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AiAssistantRoute = AiAssistantRouteImport.update({
+  id: '/ai-assistant',
+  path: '/ai-assistant',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -43,6 +49,7 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/ai-assistant': typeof AiAssistantRoute
   '/approvals': typeof ApprovalsRoute
   '/new-request': typeof NewRequestRoute
   '/reports': typeof ReportsRoute
@@ -50,6 +57,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/ai-assistant': typeof AiAssistantRoute
   '/approvals': typeof ApprovalsRoute
   '/new-request': typeof NewRequestRoute
   '/reports': typeof ReportsRoute
@@ -58,6 +66,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/ai-assistant': typeof AiAssistantRoute
   '/approvals': typeof ApprovalsRoute
   '/new-request': typeof NewRequestRoute
   '/reports': typeof ReportsRoute
@@ -65,12 +74,25 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/approvals' | '/new-request' | '/reports' | '/requests'
+  fullPaths:
+    | '/'
+    | '/ai-assistant'
+    | '/approvals'
+    | '/new-request'
+    | '/reports'
+    | '/requests'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/approvals' | '/new-request' | '/reports' | '/requests'
+  to:
+    | '/'
+    | '/ai-assistant'
+    | '/approvals'
+    | '/new-request'
+    | '/reports'
+    | '/requests'
   id:
     | '__root__'
     | '/'
+    | '/ai-assistant'
     | '/approvals'
     | '/new-request'
     | '/reports'
@@ -79,6 +101,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AiAssistantRoute: typeof AiAssistantRoute
   ApprovalsRoute: typeof ApprovalsRoute
   NewRequestRoute: typeof NewRequestRoute
   ReportsRoute: typeof ReportsRoute
@@ -115,6 +138,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApprovalsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ai-assistant': {
+      id: '/ai-assistant'
+      path: '/ai-assistant'
+      fullPath: '/ai-assistant'
+      preLoaderRoute: typeof AiAssistantRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -127,6 +157,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AiAssistantRoute: AiAssistantRoute,
   ApprovalsRoute: ApprovalsRoute,
   NewRequestRoute: NewRequestRoute,
   ReportsRoute: ReportsRoute,
