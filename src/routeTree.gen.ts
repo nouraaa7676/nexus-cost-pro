@@ -10,10 +10,14 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VendorIntelligenceRouteImport } from './routes/vendor-intelligence'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as GovernanceRouteImport } from './routes/governance'
 import { Route as ForecastingRouteImport } from './routes/forecasting'
+import { Route as DataManagementRouteImport } from './routes/data-management'
 import { Route as CostOptimizationRouteImport } from './routes/cost-optimization'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AlertsRouteImport } from './routes/alerts'
 import { Route as AiCopilotRouteImport } from './routes/ai-copilot'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiCopilotRouteImport } from './routes/api/copilot'
@@ -23,14 +27,29 @@ const VendorIntelligenceRoute = VendorIntelligenceRouteImport.update({
   path: '/vendor-intelligence',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReportsRoute = ReportsRouteImport.update({
   id: '/reports',
   path: '/reports',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GovernanceRoute = GovernanceRouteImport.update({
+  id: '/governance',
+  path: '/governance',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ForecastingRoute = ForecastingRouteImport.update({
   id: '/forecasting',
   path: '/forecasting',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DataManagementRoute = DataManagementRouteImport.update({
+  id: '/data-management',
+  path: '/data-management',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CostOptimizationRoute = CostOptimizationRouteImport.update({
@@ -41,6 +60,11 @@ const CostOptimizationRoute = CostOptimizationRouteImport.update({
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AlertsRoute = AlertsRouteImport.update({
+  id: '/alerts',
+  path: '/alerts',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AiCopilotRoute = AiCopilotRouteImport.update({
@@ -62,20 +86,28 @@ const ApiCopilotRoute = ApiCopilotRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/ai-copilot': typeof AiCopilotRoute
+  '/alerts': typeof AlertsRoute
   '/auth': typeof AuthRoute
   '/cost-optimization': typeof CostOptimizationRoute
+  '/data-management': typeof DataManagementRoute
   '/forecasting': typeof ForecastingRoute
+  '/governance': typeof GovernanceRoute
   '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
   '/vendor-intelligence': typeof VendorIntelligenceRoute
   '/api/copilot': typeof ApiCopilotRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/ai-copilot': typeof AiCopilotRoute
+  '/alerts': typeof AlertsRoute
   '/auth': typeof AuthRoute
   '/cost-optimization': typeof CostOptimizationRoute
+  '/data-management': typeof DataManagementRoute
   '/forecasting': typeof ForecastingRoute
+  '/governance': typeof GovernanceRoute
   '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
   '/vendor-intelligence': typeof VendorIntelligenceRoute
   '/api/copilot': typeof ApiCopilotRoute
 }
@@ -83,10 +115,14 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/ai-copilot': typeof AiCopilotRoute
+  '/alerts': typeof AlertsRoute
   '/auth': typeof AuthRoute
   '/cost-optimization': typeof CostOptimizationRoute
+  '/data-management': typeof DataManagementRoute
   '/forecasting': typeof ForecastingRoute
+  '/governance': typeof GovernanceRoute
   '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
   '/vendor-intelligence': typeof VendorIntelligenceRoute
   '/api/copilot': typeof ApiCopilotRoute
 }
@@ -95,30 +131,42 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/ai-copilot'
+    | '/alerts'
     | '/auth'
     | '/cost-optimization'
+    | '/data-management'
     | '/forecasting'
+    | '/governance'
     | '/reports'
+    | '/settings'
     | '/vendor-intelligence'
     | '/api/copilot'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/ai-copilot'
+    | '/alerts'
     | '/auth'
     | '/cost-optimization'
+    | '/data-management'
     | '/forecasting'
+    | '/governance'
     | '/reports'
+    | '/settings'
     | '/vendor-intelligence'
     | '/api/copilot'
   id:
     | '__root__'
     | '/'
     | '/ai-copilot'
+    | '/alerts'
     | '/auth'
     | '/cost-optimization'
+    | '/data-management'
     | '/forecasting'
+    | '/governance'
     | '/reports'
+    | '/settings'
     | '/vendor-intelligence'
     | '/api/copilot'
   fileRoutesById: FileRoutesById
@@ -126,10 +174,14 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AiCopilotRoute: typeof AiCopilotRoute
+  AlertsRoute: typeof AlertsRoute
   AuthRoute: typeof AuthRoute
   CostOptimizationRoute: typeof CostOptimizationRoute
+  DataManagementRoute: typeof DataManagementRoute
   ForecastingRoute: typeof ForecastingRoute
+  GovernanceRoute: typeof GovernanceRoute
   ReportsRoute: typeof ReportsRoute
+  SettingsRoute: typeof SettingsRoute
   VendorIntelligenceRoute: typeof VendorIntelligenceRoute
   ApiCopilotRoute: typeof ApiCopilotRoute
 }
@@ -143,6 +195,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VendorIntelligenceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reports': {
       id: '/reports'
       path: '/reports'
@@ -150,11 +209,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReportsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/governance': {
+      id: '/governance'
+      path: '/governance'
+      fullPath: '/governance'
+      preLoaderRoute: typeof GovernanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/forecasting': {
       id: '/forecasting'
       path: '/forecasting'
       fullPath: '/forecasting'
       preLoaderRoute: typeof ForecastingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/data-management': {
+      id: '/data-management'
+      path: '/data-management'
+      fullPath: '/data-management'
+      preLoaderRoute: typeof DataManagementRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cost-optimization': {
@@ -169,6 +242,13 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/alerts': {
+      id: '/alerts'
+      path: '/alerts'
+      fullPath: '/alerts'
+      preLoaderRoute: typeof AlertsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ai-copilot': {
@@ -198,10 +278,14 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AiCopilotRoute: AiCopilotRoute,
+  AlertsRoute: AlertsRoute,
   AuthRoute: AuthRoute,
   CostOptimizationRoute: CostOptimizationRoute,
+  DataManagementRoute: DataManagementRoute,
   ForecastingRoute: ForecastingRoute,
+  GovernanceRoute: GovernanceRoute,
   ReportsRoute: ReportsRoute,
+  SettingsRoute: SettingsRoute,
   VendorIntelligenceRoute: VendorIntelligenceRoute,
   ApiCopilotRoute: ApiCopilotRoute,
 }
