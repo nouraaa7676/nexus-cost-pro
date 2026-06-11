@@ -56,7 +56,7 @@ function Settings() {
     qc.invalidateQueries({ queryKey: ["my-profile"] });
   }
 
-  async function toggleRole(role: string) {
+  async function toggleRole(role: typeof ROLES[number]["value"]) {
     if (!me) return;
     const have = myRoles?.includes(role);
     if (have) {

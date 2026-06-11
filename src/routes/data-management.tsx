@@ -98,7 +98,9 @@ function DataManagement() {
         return out;
       });
 
-      const { error, count } = await supabase.from(entity).insert(records, { count: "exact" });
+      // Insert via dynamic table name — typed types are strict per table; cast records as any.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const { error, count } = await (supabase.from(entity) as any).insert(records, { count: "exact" });
       if (error) throw error;
       await supabase.from("audit_logs").insert({ action: "data.import", entity, metadata: { rows: count } });
       toast.success(`Imported ${count ?? records.length} ${entity} rows`);
