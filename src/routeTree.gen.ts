@@ -9,22 +9,27 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ResearchRouteImport } from './routes/research'
-import { Route as RequestsRouteImport } from './routes/requests'
+import { Route as VendorIntelligenceRouteImport } from './routes/vendor-intelligence'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as ReportsRouteImport } from './routes/reports'
-import { Route as NewRequestRouteImport } from './routes/new-request'
-import { Route as ApprovalsRouteImport } from './routes/approvals'
-import { Route as AiAssistantRouteImport } from './routes/ai-assistant'
+import { Route as GovernanceRouteImport } from './routes/governance'
+import { Route as ForecastingRouteImport } from './routes/forecasting'
+import { Route as DataManagementRouteImport } from './routes/data-management'
+import { Route as CostOptimizationRouteImport } from './routes/cost-optimization'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AlertsRouteImport } from './routes/alerts'
+import { Route as AiCopilotRouteImport } from './routes/ai-copilot'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiCopilotRouteImport } from './routes/api/copilot'
 
-const ResearchRoute = ResearchRouteImport.update({
-  id: '/research',
-  path: '/research',
+const VendorIntelligenceRoute = VendorIntelligenceRouteImport.update({
+  id: '/vendor-intelligence',
+  path: '/vendor-intelligence',
   getParentRoute: () => rootRouteImport,
 } as any)
-const RequestsRoute = RequestsRouteImport.update({
-  id: '/requests',
-  path: '/requests',
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ReportsRoute = ReportsRouteImport.update({
@@ -32,19 +37,39 @@ const ReportsRoute = ReportsRouteImport.update({
   path: '/reports',
   getParentRoute: () => rootRouteImport,
 } as any)
-const NewRequestRoute = NewRequestRouteImport.update({
-  id: '/new-request',
-  path: '/new-request',
+const GovernanceRoute = GovernanceRouteImport.update({
+  id: '/governance',
+  path: '/governance',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApprovalsRoute = ApprovalsRouteImport.update({
-  id: '/approvals',
-  path: '/approvals',
+const ForecastingRoute = ForecastingRouteImport.update({
+  id: '/forecasting',
+  path: '/forecasting',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AiAssistantRoute = AiAssistantRouteImport.update({
-  id: '/ai-assistant',
-  path: '/ai-assistant',
+const DataManagementRoute = DataManagementRouteImport.update({
+  id: '/data-management',
+  path: '/data-management',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CostOptimizationRoute = CostOptimizationRouteImport.update({
+  id: '/cost-optimization',
+  path: '/cost-optimization',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AlertsRoute = AlertsRouteImport.update({
+  id: '/alerts',
+  path: '/alerts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiCopilotRoute = AiCopilotRouteImport.update({
+  id: '/ai-copilot',
+  path: '/ai-copilot',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -52,89 +77,129 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiCopilotRoute = ApiCopilotRouteImport.update({
+  id: '/api/copilot',
+  path: '/api/copilot',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/ai-assistant': typeof AiAssistantRoute
-  '/approvals': typeof ApprovalsRoute
-  '/new-request': typeof NewRequestRoute
+  '/ai-copilot': typeof AiCopilotRoute
+  '/alerts': typeof AlertsRoute
+  '/auth': typeof AuthRoute
+  '/cost-optimization': typeof CostOptimizationRoute
+  '/data-management': typeof DataManagementRoute
+  '/forecasting': typeof ForecastingRoute
+  '/governance': typeof GovernanceRoute
   '/reports': typeof ReportsRoute
-  '/requests': typeof RequestsRoute
-  '/research': typeof ResearchRoute
+  '/settings': typeof SettingsRoute
+  '/vendor-intelligence': typeof VendorIntelligenceRoute
+  '/api/copilot': typeof ApiCopilotRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/ai-assistant': typeof AiAssistantRoute
-  '/approvals': typeof ApprovalsRoute
-  '/new-request': typeof NewRequestRoute
+  '/ai-copilot': typeof AiCopilotRoute
+  '/alerts': typeof AlertsRoute
+  '/auth': typeof AuthRoute
+  '/cost-optimization': typeof CostOptimizationRoute
+  '/data-management': typeof DataManagementRoute
+  '/forecasting': typeof ForecastingRoute
+  '/governance': typeof GovernanceRoute
   '/reports': typeof ReportsRoute
-  '/requests': typeof RequestsRoute
-  '/research': typeof ResearchRoute
+  '/settings': typeof SettingsRoute
+  '/vendor-intelligence': typeof VendorIntelligenceRoute
+  '/api/copilot': typeof ApiCopilotRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/ai-assistant': typeof AiAssistantRoute
-  '/approvals': typeof ApprovalsRoute
-  '/new-request': typeof NewRequestRoute
+  '/ai-copilot': typeof AiCopilotRoute
+  '/alerts': typeof AlertsRoute
+  '/auth': typeof AuthRoute
+  '/cost-optimization': typeof CostOptimizationRoute
+  '/data-management': typeof DataManagementRoute
+  '/forecasting': typeof ForecastingRoute
+  '/governance': typeof GovernanceRoute
   '/reports': typeof ReportsRoute
-  '/requests': typeof RequestsRoute
-  '/research': typeof ResearchRoute
+  '/settings': typeof SettingsRoute
+  '/vendor-intelligence': typeof VendorIntelligenceRoute
+  '/api/copilot': typeof ApiCopilotRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/ai-assistant'
-    | '/approvals'
-    | '/new-request'
+    | '/ai-copilot'
+    | '/alerts'
+    | '/auth'
+    | '/cost-optimization'
+    | '/data-management'
+    | '/forecasting'
+    | '/governance'
     | '/reports'
-    | '/requests'
-    | '/research'
+    | '/settings'
+    | '/vendor-intelligence'
+    | '/api/copilot'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/ai-assistant'
-    | '/approvals'
-    | '/new-request'
+    | '/ai-copilot'
+    | '/alerts'
+    | '/auth'
+    | '/cost-optimization'
+    | '/data-management'
+    | '/forecasting'
+    | '/governance'
     | '/reports'
-    | '/requests'
-    | '/research'
+    | '/settings'
+    | '/vendor-intelligence'
+    | '/api/copilot'
   id:
     | '__root__'
     | '/'
-    | '/ai-assistant'
-    | '/approvals'
-    | '/new-request'
+    | '/ai-copilot'
+    | '/alerts'
+    | '/auth'
+    | '/cost-optimization'
+    | '/data-management'
+    | '/forecasting'
+    | '/governance'
     | '/reports'
-    | '/requests'
-    | '/research'
+    | '/settings'
+    | '/vendor-intelligence'
+    | '/api/copilot'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AiAssistantRoute: typeof AiAssistantRoute
-  ApprovalsRoute: typeof ApprovalsRoute
-  NewRequestRoute: typeof NewRequestRoute
+  AiCopilotRoute: typeof AiCopilotRoute
+  AlertsRoute: typeof AlertsRoute
+  AuthRoute: typeof AuthRoute
+  CostOptimizationRoute: typeof CostOptimizationRoute
+  DataManagementRoute: typeof DataManagementRoute
+  ForecastingRoute: typeof ForecastingRoute
+  GovernanceRoute: typeof GovernanceRoute
   ReportsRoute: typeof ReportsRoute
-  RequestsRoute: typeof RequestsRoute
-  ResearchRoute: typeof ResearchRoute
+  SettingsRoute: typeof SettingsRoute
+  VendorIntelligenceRoute: typeof VendorIntelligenceRoute
+  ApiCopilotRoute: typeof ApiCopilotRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/research': {
-      id: '/research'
-      path: '/research'
-      fullPath: '/research'
-      preLoaderRoute: typeof ResearchRouteImport
+    '/vendor-intelligence': {
+      id: '/vendor-intelligence'
+      path: '/vendor-intelligence'
+      fullPath: '/vendor-intelligence'
+      preLoaderRoute: typeof VendorIntelligenceRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/requests': {
-      id: '/requests'
-      path: '/requests'
-      fullPath: '/requests'
-      preLoaderRoute: typeof RequestsRouteImport
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/reports': {
@@ -144,25 +209,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReportsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/new-request': {
-      id: '/new-request'
-      path: '/new-request'
-      fullPath: '/new-request'
-      preLoaderRoute: typeof NewRequestRouteImport
+    '/governance': {
+      id: '/governance'
+      path: '/governance'
+      fullPath: '/governance'
+      preLoaderRoute: typeof GovernanceRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/approvals': {
-      id: '/approvals'
-      path: '/approvals'
-      fullPath: '/approvals'
-      preLoaderRoute: typeof ApprovalsRouteImport
+    '/forecasting': {
+      id: '/forecasting'
+      path: '/forecasting'
+      fullPath: '/forecasting'
+      preLoaderRoute: typeof ForecastingRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/ai-assistant': {
-      id: '/ai-assistant'
-      path: '/ai-assistant'
-      fullPath: '/ai-assistant'
-      preLoaderRoute: typeof AiAssistantRouteImport
+    '/data-management': {
+      id: '/data-management'
+      path: '/data-management'
+      fullPath: '/data-management'
+      preLoaderRoute: typeof DataManagementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cost-optimization': {
+      id: '/cost-optimization'
+      path: '/cost-optimization'
+      fullPath: '/cost-optimization'
+      preLoaderRoute: typeof CostOptimizationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/alerts': {
+      id: '/alerts'
+      path: '/alerts'
+      fullPath: '/alerts'
+      preLoaderRoute: typeof AlertsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai-copilot': {
+      id: '/ai-copilot'
+      path: '/ai-copilot'
+      fullPath: '/ai-copilot'
+      preLoaderRoute: typeof AiCopilotRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -172,28 +265,30 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/copilot': {
+      id: '/api/copilot'
+      path: '/api/copilot'
+      fullPath: '/api/copilot'
+      preLoaderRoute: typeof ApiCopilotRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AiAssistantRoute: AiAssistantRoute,
-  ApprovalsRoute: ApprovalsRoute,
-  NewRequestRoute: NewRequestRoute,
+  AiCopilotRoute: AiCopilotRoute,
+  AlertsRoute: AlertsRoute,
+  AuthRoute: AuthRoute,
+  CostOptimizationRoute: CostOptimizationRoute,
+  DataManagementRoute: DataManagementRoute,
+  ForecastingRoute: ForecastingRoute,
+  GovernanceRoute: GovernanceRoute,
   ReportsRoute: ReportsRoute,
-  RequestsRoute: RequestsRoute,
-  ResearchRoute: ResearchRoute,
+  SettingsRoute: SettingsRoute,
+  VendorIntelligenceRoute: VendorIntelligenceRoute,
+  ApiCopilotRoute: ApiCopilotRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
