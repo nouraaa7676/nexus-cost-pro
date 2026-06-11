@@ -9,19 +9,43 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VendorIntelligenceRouteImport } from './routes/vendor-intelligence'
 import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as ForecastingRouteImport } from './routes/forecasting'
+import { Route as CostOptimizationRouteImport } from './routes/cost-optimization'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AiCopilotRouteImport } from './routes/ai-copilot'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiCopilotRouteImport } from './routes/api/copilot'
 
+const VendorIntelligenceRoute = VendorIntelligenceRouteImport.update({
+  id: '/vendor-intelligence',
+  path: '/vendor-intelligence',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReportsRoute = ReportsRouteImport.update({
   id: '/reports',
   path: '/reports',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ForecastingRoute = ForecastingRouteImport.update({
+  id: '/forecasting',
+  path: '/forecasting',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CostOptimizationRoute = CostOptimizationRouteImport.update({
+  id: '/cost-optimization',
+  path: '/cost-optimization',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiCopilotRoute = AiCopilotRouteImport.update({
+  id: '/ai-copilot',
+  path: '/ai-copilot',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -37,40 +61,88 @@ const ApiCopilotRoute = ApiCopilotRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/ai-copilot': typeof AiCopilotRoute
   '/auth': typeof AuthRoute
+  '/cost-optimization': typeof CostOptimizationRoute
+  '/forecasting': typeof ForecastingRoute
   '/reports': typeof ReportsRoute
+  '/vendor-intelligence': typeof VendorIntelligenceRoute
   '/api/copilot': typeof ApiCopilotRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/ai-copilot': typeof AiCopilotRoute
   '/auth': typeof AuthRoute
+  '/cost-optimization': typeof CostOptimizationRoute
+  '/forecasting': typeof ForecastingRoute
   '/reports': typeof ReportsRoute
+  '/vendor-intelligence': typeof VendorIntelligenceRoute
   '/api/copilot': typeof ApiCopilotRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/ai-copilot': typeof AiCopilotRoute
   '/auth': typeof AuthRoute
+  '/cost-optimization': typeof CostOptimizationRoute
+  '/forecasting': typeof ForecastingRoute
   '/reports': typeof ReportsRoute
+  '/vendor-intelligence': typeof VendorIntelligenceRoute
   '/api/copilot': typeof ApiCopilotRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/reports' | '/api/copilot'
+  fullPaths:
+    | '/'
+    | '/ai-copilot'
+    | '/auth'
+    | '/cost-optimization'
+    | '/forecasting'
+    | '/reports'
+    | '/vendor-intelligence'
+    | '/api/copilot'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/reports' | '/api/copilot'
-  id: '__root__' | '/' | '/auth' | '/reports' | '/api/copilot'
+  to:
+    | '/'
+    | '/ai-copilot'
+    | '/auth'
+    | '/cost-optimization'
+    | '/forecasting'
+    | '/reports'
+    | '/vendor-intelligence'
+    | '/api/copilot'
+  id:
+    | '__root__'
+    | '/'
+    | '/ai-copilot'
+    | '/auth'
+    | '/cost-optimization'
+    | '/forecasting'
+    | '/reports'
+    | '/vendor-intelligence'
+    | '/api/copilot'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AiCopilotRoute: typeof AiCopilotRoute
   AuthRoute: typeof AuthRoute
+  CostOptimizationRoute: typeof CostOptimizationRoute
+  ForecastingRoute: typeof ForecastingRoute
   ReportsRoute: typeof ReportsRoute
+  VendorIntelligenceRoute: typeof VendorIntelligenceRoute
   ApiCopilotRoute: typeof ApiCopilotRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/vendor-intelligence': {
+      id: '/vendor-intelligence'
+      path: '/vendor-intelligence'
+      fullPath: '/vendor-intelligence'
+      preLoaderRoute: typeof VendorIntelligenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reports': {
       id: '/reports'
       path: '/reports'
@@ -78,11 +150,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReportsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/forecasting': {
+      id: '/forecasting'
+      path: '/forecasting'
+      fullPath: '/forecasting'
+      preLoaderRoute: typeof ForecastingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cost-optimization': {
+      id: '/cost-optimization'
+      path: '/cost-optimization'
+      fullPath: '/cost-optimization'
+      preLoaderRoute: typeof CostOptimizationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/auth': {
       id: '/auth'
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai-copilot': {
+      id: '/ai-copilot'
+      path: '/ai-copilot'
+      fullPath: '/ai-copilot'
+      preLoaderRoute: typeof AiCopilotRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -104,10 +197,24 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AiCopilotRoute: AiCopilotRoute,
   AuthRoute: AuthRoute,
+  CostOptimizationRoute: CostOptimizationRoute,
+  ForecastingRoute: ForecastingRoute,
   ReportsRoute: ReportsRoute,
+  VendorIntelligenceRoute: VendorIntelligenceRoute,
   ApiCopilotRoute: ApiCopilotRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
