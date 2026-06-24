@@ -29,6 +29,11 @@ export function AppLayout({ children, title, subtitle }: { children: ReactNode; 
 
   useEffect(() => {
     let mounted = true;
+    if (typeof window !== "undefined" && localStorage.getItem("demo_mode") === "1") {
+      setUserEmail("guest@demo.local");
+      setChecking(false);
+      return () => { mounted = false; };
+    }
     supabase.auth.getSession().then(({ data }) => {
       if (!mounted) return;
       if (!data.session) {
@@ -39,8 +44,10 @@ export function AppLayout({ children, title, subtitle }: { children: ReactNode; 
       setChecking(false);
     });
     const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => {
-      if (!session) navigate({ to: "/auth" });
-      else setUserEmail(session.user.email ?? null);
+      if (!session) {
+        if (typeof window !== "undefined" && localStorage.getItem("demo_mode") === "1") return;
+        navigate({ to: "/auth" });
+      } else setUserEmail(session.user.email ?? null);
     });
     return () => { mounted = false; sub.subscription.unsubscribe(); };
   }, [navigate]);
@@ -65,6 +72,7 @@ export function AppLayout({ children, title, subtitle }: { children: ReactNode; 
   });
 
   async function signOut() {
+    if (typeof window !== "undefined") localStorage.removeItem("demo_mode");
     await supabase.auth.signOut();
     navigate({ to: "/auth" });
   }
