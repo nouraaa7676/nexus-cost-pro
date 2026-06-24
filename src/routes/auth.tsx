@@ -18,6 +18,10 @@ function AuthPage() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    if (typeof window !== "undefined" && localStorage.getItem("demo_mode") === "1") {
+      navigate({ to: "/" });
+      return;
+    }
     supabase.auth.getSession().then(({ data }) => {
       if (data.session) navigate({ to: "/" });
     });
@@ -105,6 +109,22 @@ function AuthPage() {
           <button onClick={() => setMode(mode === "signin" ? "signup" : "signin")} className="mt-4 text-sm text-muted-foreground hover:text-foreground">
             {mode === "signin" ? "Need an account? Create one →" : "Already have an account? Sign in →"}
           </button>
+
+          <div className="mt-6 pt-6 border-t border-border">
+            <button
+              onClick={() => {
+                localStorage.setItem("demo_mode", "1");
+                toast.success("Continuing as guest (demo mode)");
+                navigate({ to: "/" });
+              }}
+              className="w-full px-4 py-2.5 rounded-md border border-border bg-background text-sm font-medium hover:bg-muted"
+            >
+              Skip — continue as guest
+            </button>
+            <p className="mt-2 text-[11px] text-muted-foreground text-center">
+              Demo mode bypasses sign-in. Data writes may be restricted by row-level security.
+            </p>
+          </div>
         </div>
       </div>
     </div>
