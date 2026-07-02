@@ -130,6 +130,259 @@ export type Database = {
           },
         ]
       }
+      capex_requests: {
+        Row: {
+          business_justification: string | null
+          business_unit: string
+          created_at: string
+          department_id: string | null
+          estimated_budget: number
+          expected_benefits: string | null
+          expected_completion_date: string | null
+          expected_start_date: string | null
+          id: string
+          priority: Database["public"]["Enums"]["priority_level"]
+          project_code: string
+          project_name: string
+          request_date: string
+          request_owner: string
+          scope_of_work: string | null
+          stage: Database["public"]["Enums"]["capex_stage"]
+          submitted_by: string | null
+          updated_at: string
+          vendor_id: string | null
+        }
+        Insert: {
+          business_justification?: string | null
+          business_unit: string
+          created_at?: string
+          department_id?: string | null
+          estimated_budget?: number
+          expected_benefits?: string | null
+          expected_completion_date?: string | null
+          expected_start_date?: string | null
+          id?: string
+          priority?: Database["public"]["Enums"]["priority_level"]
+          project_code?: string
+          project_name: string
+          request_date?: string
+          request_owner: string
+          scope_of_work?: string | null
+          stage?: Database["public"]["Enums"]["capex_stage"]
+          submitted_by?: string | null
+          updated_at?: string
+          vendor_id?: string | null
+        }
+        Update: {
+          business_justification?: string | null
+          business_unit?: string
+          created_at?: string
+          department_id?: string | null
+          estimated_budget?: number
+          expected_benefits?: string | null
+          expected_completion_date?: string | null
+          expected_start_date?: string | null
+          id?: string
+          priority?: Database["public"]["Enums"]["priority_level"]
+          project_code?: string
+          project_name?: string
+          request_date?: string
+          request_owner?: string
+          scope_of_work?: string | null
+          stage?: Database["public"]["Enums"]["capex_stage"]
+          submitted_by?: string | null
+          updated_at?: string
+          vendor_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "capex_requests_department_id_fkey"
+            columns: ["department_id"]
+            isOneToOne: false
+            referencedRelation: "departments"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "capex_requests_vendor_id_fkey"
+            columns: ["vendor_id"]
+            isOneToOne: false
+            referencedRelation: "vendors"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      capex_reviews: {
+        Row: {
+          budget_available: boolean | null
+          business_case_ok: boolean | null
+          category_ok: boolean | null
+          comments: string | null
+          created_at: string
+          financial_ok: boolean | null
+          id: string
+          request_id: string
+          reviewer_id: string | null
+          risk_ok: boolean | null
+          roi_ok: boolean | null
+          scope_ok: boolean | null
+          updated_at: string
+        }
+        Insert: {
+          budget_available?: boolean | null
+          business_case_ok?: boolean | null
+          category_ok?: boolean | null
+          comments?: string | null
+          created_at?: string
+          financial_ok?: boolean | null
+          id?: string
+          request_id: string
+          reviewer_id?: string | null
+          risk_ok?: boolean | null
+          roi_ok?: boolean | null
+          scope_ok?: boolean | null
+          updated_at?: string
+        }
+        Update: {
+          budget_available?: boolean | null
+          business_case_ok?: boolean | null
+          category_ok?: boolean | null
+          comments?: string | null
+          created_at?: string
+          financial_ok?: boolean | null
+          id?: string
+          request_id?: string
+          reviewer_id?: string | null
+          risk_ok?: boolean | null
+          roi_ok?: boolean | null
+          scope_ok?: boolean | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "capex_reviews_request_id_fkey"
+            columns: ["request_id"]
+            isOneToOne: false
+            referencedRelation: "capex_requests"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      cash_flow_forecast: {
+        Row: {
+          actual_outflow: number
+          created_at: string
+          fiscal_year: number
+          id: string
+          period_month: number
+          planned_outflow: number
+          request_id: string | null
+          updated_at: string
+        }
+        Insert: {
+          actual_outflow?: number
+          created_at?: string
+          fiscal_year: number
+          id?: string
+          period_month: number
+          planned_outflow?: number
+          request_id?: string | null
+          updated_at?: string
+        }
+        Update: {
+          actual_outflow?: number
+          created_at?: string
+          fiscal_year?: number
+          id?: string
+          period_month?: number
+          planned_outflow?: number
+          request_id?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "cash_flow_forecast_request_id_fkey"
+            columns: ["request_id"]
+            isOneToOne: false
+            referencedRelation: "capex_requests"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      cesr_records: {
+        Row: {
+          budget_code: string | null
+          budget_line: string | null
+          capex_category: string | null
+          cesr_number: string
+          cost_center: string | null
+          created_at: string
+          department_id: string | null
+          financial_details: string | null
+          id: string
+          procurement_approval: string | null
+          project_owner: string | null
+          proposal_attachment: string | null
+          request_id: string | null
+          scope_details: string | null
+          task_name: string
+          technical_details: string | null
+          updated_at: string
+        }
+        Insert: {
+          budget_code?: string | null
+          budget_line?: string | null
+          capex_category?: string | null
+          cesr_number?: string
+          cost_center?: string | null
+          created_at?: string
+          department_id?: string | null
+          financial_details?: string | null
+          id?: string
+          procurement_approval?: string | null
+          project_owner?: string | null
+          proposal_attachment?: string | null
+          request_id?: string | null
+          scope_details?: string | null
+          task_name: string
+          technical_details?: string | null
+          updated_at?: string
+        }
+        Update: {
+          budget_code?: string | null
+          budget_line?: string | null
+          capex_category?: string | null
+          cesr_number?: string
+          cost_center?: string | null
+          created_at?: string
+          department_id?: string | null
+          financial_details?: string | null
+          id?: string
+          procurement_approval?: string | null
+          project_owner?: string | null
+          proposal_attachment?: string | null
+          request_id?: string | null
+          scope_details?: string | null
+          task_name?: string
+          technical_details?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "cesr_records_department_id_fkey"
+            columns: ["department_id"]
+            isOneToOne: false
+            referencedRelation: "departments"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "cesr_records_request_id_fkey"
+            columns: ["request_id"]
+            isOneToOne: false
+            referencedRelation: "capex_requests"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       contracts: {
         Row: {
           created_at: string
@@ -216,6 +469,59 @@ export type Database = {
           updated_at?: string
         }
         Relationships: []
+      }
+      financial_processing: {
+        Row: {
+          available_budget_verified: boolean | null
+          budget_line_validated: boolean | null
+          budget_released: boolean | null
+          created_at: string
+          final_approved: boolean | null
+          finance_user: string | null
+          financial_reference: string | null
+          id: string
+          notes: string | null
+          released_amount: number | null
+          request_id: string
+          updated_at: string
+        }
+        Insert: {
+          available_budget_verified?: boolean | null
+          budget_line_validated?: boolean | null
+          budget_released?: boolean | null
+          created_at?: string
+          final_approved?: boolean | null
+          finance_user?: string | null
+          financial_reference?: string | null
+          id?: string
+          notes?: string | null
+          released_amount?: number | null
+          request_id: string
+          updated_at?: string
+        }
+        Update: {
+          available_budget_verified?: boolean | null
+          budget_line_validated?: boolean | null
+          budget_released?: boolean | null
+          created_at?: string
+          final_approved?: boolean | null
+          finance_user?: string | null
+          financial_reference?: string | null
+          id?: string
+          notes?: string | null
+          released_amount?: number | null
+          request_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "financial_processing_request_id_fkey"
+            columns: ["request_id"]
+            isOneToOne: false
+            referencedRelation: "capex_requests"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       forecasts: {
         Row: {
@@ -392,6 +698,85 @@ export type Database = {
         }
         Relationships: []
       }
+      project_approvals: {
+        Row: {
+          action: Database["public"]["Enums"]["approval_action"]
+          actor_email: string | null
+          actor_id: string | null
+          comments: string | null
+          created_at: string
+          id: string
+          request_id: string
+          stage: Database["public"]["Enums"]["capex_stage"]
+        }
+        Insert: {
+          action: Database["public"]["Enums"]["approval_action"]
+          actor_email?: string | null
+          actor_id?: string | null
+          comments?: string | null
+          created_at?: string
+          id?: string
+          request_id: string
+          stage: Database["public"]["Enums"]["capex_stage"]
+        }
+        Update: {
+          action?: Database["public"]["Enums"]["approval_action"]
+          actor_email?: string | null
+          actor_id?: string | null
+          comments?: string | null
+          created_at?: string
+          id?: string
+          request_id?: string
+          stage?: Database["public"]["Enums"]["capex_stage"]
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_approvals_request_id_fkey"
+            columns: ["request_id"]
+            isOneToOne: false
+            referencedRelation: "capex_requests"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      project_documents: {
+        Row: {
+          created_at: string
+          file_kind: string | null
+          file_name: string
+          file_path: string | null
+          id: string
+          request_id: string | null
+          uploaded_by: string | null
+        }
+        Insert: {
+          created_at?: string
+          file_kind?: string | null
+          file_name: string
+          file_path?: string | null
+          id?: string
+          request_id?: string | null
+          uploaded_by?: string | null
+        }
+        Update: {
+          created_at?: string
+          file_kind?: string | null
+          file_name?: string
+          file_path?: string | null
+          id?: string
+          request_id?: string | null
+          uploaded_by?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_documents_request_id_fkey"
+            columns: ["request_id"]
+            isOneToOne: false
+            referencedRelation: "capex_requests"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       projects: {
         Row: {
           actual_amount: number
@@ -556,8 +941,20 @@ export type Database = {
         | "department_manager"
         | "business_user"
         | "admin"
+      approval_action: "approve" | "reject" | "return"
       budget_type: "CAPEX" | "OPEX"
+      capex_stage:
+        | "draft"
+        | "commercial"
+        | "budget_review"
+        | "department_manager"
+        | "senior_manager"
+        | "svp"
+        | "finance"
+        | "completed"
+        | "rejected"
       invoice_status: "pending" | "approved" | "rejected" | "paid" | "flagged"
+      priority_level: "low" | "medium" | "high" | "critical"
       risk_level: "low" | "medium" | "high"
     }
     CompositeTypes: {
@@ -696,8 +1093,21 @@ export const Constants = {
         "business_user",
         "admin",
       ],
+      approval_action: ["approve", "reject", "return"],
       budget_type: ["CAPEX", "OPEX"],
+      capex_stage: [
+        "draft",
+        "commercial",
+        "budget_review",
+        "department_manager",
+        "senior_manager",
+        "svp",
+        "finance",
+        "completed",
+        "rejected",
+      ],
       invoice_status: ["pending", "approved", "rejected", "paid", "flagged"],
+      priority_level: ["low", "medium", "high", "critical"],
       risk_level: ["low", "medium", "high"],
     },
   },
