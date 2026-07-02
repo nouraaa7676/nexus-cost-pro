@@ -332,7 +332,7 @@ function ControllerActions({ departments, onSaved }: any) {
     const { error: e2 } = await supabase.from("departments").update({ annual_budget: Number(dst.annual_budget) + a }).eq("id", to);
     if (e1 || e2) toast.error((e1 || e2)!.message);
     else {
-      await supabase.from("audit_logs").insert({ action: "budget_transfer", entity: "departments", entity_id: to, details: { from, to, amount: a } }).select();
+      await supabase.from("audit_logs").insert({ action: "budget_transfer", entity: "departments", entity_id: to, metadata: { from, to, amount: a } as any });
       toast.success("Budget transferred");
       setAmount("");
       onSaved?.();
