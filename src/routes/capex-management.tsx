@@ -282,7 +282,7 @@ function CapexManagement() {
       )}
 
       {tab === "requests" && (
-        <RequestsTable requests={requests} departments={departments} onSelect={(id) => { setSelectedId(id); setTab("workflow"); }} />
+        <RequestsTable requests={requests} departments={departments} onSelect={(id: string) => { setSelectedId(id); setTab("workflow"); }} />
       )}
 
       {tab === "new" && (

@@ -16,6 +16,7 @@ import { Route as GovernanceRouteImport } from './routes/governance'
 import { Route as ForecastingRouteImport } from './routes/forecasting'
 import { Route as DataManagementRouteImport } from './routes/data-management'
 import { Route as CostOptimizationRouteImport } from './routes/cost-optimization'
+import { Route as CapexManagementRouteImport } from './routes/capex-management'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AlertsRouteImport } from './routes/alerts'
 import { Route as AiCopilotRouteImport } from './routes/ai-copilot'
@@ -57,6 +58,11 @@ const CostOptimizationRoute = CostOptimizationRouteImport.update({
   path: '/cost-optimization',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CapexManagementRoute = CapexManagementRouteImport.update({
+  id: '/capex-management',
+  path: '/capex-management',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
@@ -88,6 +94,7 @@ export interface FileRoutesByFullPath {
   '/ai-copilot': typeof AiCopilotRoute
   '/alerts': typeof AlertsRoute
   '/auth': typeof AuthRoute
+  '/capex-management': typeof CapexManagementRoute
   '/cost-optimization': typeof CostOptimizationRoute
   '/data-management': typeof DataManagementRoute
   '/forecasting': typeof ForecastingRoute
@@ -102,6 +109,7 @@ export interface FileRoutesByTo {
   '/ai-copilot': typeof AiCopilotRoute
   '/alerts': typeof AlertsRoute
   '/auth': typeof AuthRoute
+  '/capex-management': typeof CapexManagementRoute
   '/cost-optimization': typeof CostOptimizationRoute
   '/data-management': typeof DataManagementRoute
   '/forecasting': typeof ForecastingRoute
@@ -117,6 +125,7 @@ export interface FileRoutesById {
   '/ai-copilot': typeof AiCopilotRoute
   '/alerts': typeof AlertsRoute
   '/auth': typeof AuthRoute
+  '/capex-management': typeof CapexManagementRoute
   '/cost-optimization': typeof CostOptimizationRoute
   '/data-management': typeof DataManagementRoute
   '/forecasting': typeof ForecastingRoute
@@ -133,6 +142,7 @@ export interface FileRouteTypes {
     | '/ai-copilot'
     | '/alerts'
     | '/auth'
+    | '/capex-management'
     | '/cost-optimization'
     | '/data-management'
     | '/forecasting'
@@ -147,6 +157,7 @@ export interface FileRouteTypes {
     | '/ai-copilot'
     | '/alerts'
     | '/auth'
+    | '/capex-management'
     | '/cost-optimization'
     | '/data-management'
     | '/forecasting'
@@ -161,6 +172,7 @@ export interface FileRouteTypes {
     | '/ai-copilot'
     | '/alerts'
     | '/auth'
+    | '/capex-management'
     | '/cost-optimization'
     | '/data-management'
     | '/forecasting'
@@ -176,6 +188,7 @@ export interface RootRouteChildren {
   AiCopilotRoute: typeof AiCopilotRoute
   AlertsRoute: typeof AlertsRoute
   AuthRoute: typeof AuthRoute
+  CapexManagementRoute: typeof CapexManagementRoute
   CostOptimizationRoute: typeof CostOptimizationRoute
   DataManagementRoute: typeof DataManagementRoute
   ForecastingRoute: typeof ForecastingRoute
@@ -237,6 +250,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CostOptimizationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/capex-management': {
+      id: '/capex-management'
+      path: '/capex-management'
+      fullPath: '/capex-management'
+      preLoaderRoute: typeof CapexManagementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/auth': {
       id: '/auth'
       path: '/auth'
@@ -280,6 +300,7 @@ const rootRouteChildren: RootRouteChildren = {
   AiCopilotRoute: AiCopilotRoute,
   AlertsRoute: AlertsRoute,
   AuthRoute: AuthRoute,
+  CapexManagementRoute: CapexManagementRoute,
   CostOptimizationRoute: CostOptimizationRoute,
   DataManagementRoute: DataManagementRoute,
   ForecastingRoute: ForecastingRoute,
