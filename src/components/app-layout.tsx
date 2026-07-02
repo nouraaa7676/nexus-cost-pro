@@ -2,6 +2,7 @@ import { Link, useRouterState, useNavigate } from "@tanstack/react-router";
 import {
   LayoutDashboard, Bot, TrendingUp, Sparkles, Building2, BarChart3,
   Database, Shield, Settings, Bell, Search, LogOut, AlertTriangle,
+  FolderKanban, Wallet,
 } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
@@ -10,6 +11,8 @@ import { useQuery } from "@tanstack/react-query";
 
 const nav = [
   { to: "/", label: "Dashboard", icon: LayoutDashboard },
+  { to: "/capex-management", label: "CAPEX Management", icon: FolderKanban },
+  { to: "/opex-management", label: "OPEX Management", icon: Wallet },
   { to: "/ai-copilot", label: "AI Co-Pilot", icon: Bot },
   { to: "/forecasting", label: "Forecasting", icon: TrendingUp },
   { to: "/cost-optimization", label: "Cost Optimization", icon: Sparkles },
