@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as VendorIntelligenceRouteImport } from './routes/vendor-intelligence'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as OpexManagementRouteImport } from './routes/opex-management'
 import { Route as GovernanceRouteImport } from './routes/governance'
 import { Route as ForecastingRouteImport } from './routes/forecasting'
 import { Route as DataManagementRouteImport } from './routes/data-management'
@@ -36,6 +37,11 @@ const SettingsRoute = SettingsRouteImport.update({
 const ReportsRoute = ReportsRouteImport.update({
   id: '/reports',
   path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OpexManagementRoute = OpexManagementRouteImport.update({
+  id: '/opex-management',
+  path: '/opex-management',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GovernanceRoute = GovernanceRouteImport.update({
@@ -99,6 +105,7 @@ export interface FileRoutesByFullPath {
   '/data-management': typeof DataManagementRoute
   '/forecasting': typeof ForecastingRoute
   '/governance': typeof GovernanceRoute
+  '/opex-management': typeof OpexManagementRoute
   '/reports': typeof ReportsRoute
   '/settings': typeof SettingsRoute
   '/vendor-intelligence': typeof VendorIntelligenceRoute
@@ -114,6 +121,7 @@ export interface FileRoutesByTo {
   '/data-management': typeof DataManagementRoute
   '/forecasting': typeof ForecastingRoute
   '/governance': typeof GovernanceRoute
+  '/opex-management': typeof OpexManagementRoute
   '/reports': typeof ReportsRoute
   '/settings': typeof SettingsRoute
   '/vendor-intelligence': typeof VendorIntelligenceRoute
@@ -130,6 +138,7 @@ export interface FileRoutesById {
   '/data-management': typeof DataManagementRoute
   '/forecasting': typeof ForecastingRoute
   '/governance': typeof GovernanceRoute
+  '/opex-management': typeof OpexManagementRoute
   '/reports': typeof ReportsRoute
   '/settings': typeof SettingsRoute
   '/vendor-intelligence': typeof VendorIntelligenceRoute
@@ -147,6 +156,7 @@ export interface FileRouteTypes {
     | '/data-management'
     | '/forecasting'
     | '/governance'
+    | '/opex-management'
     | '/reports'
     | '/settings'
     | '/vendor-intelligence'
@@ -162,6 +172,7 @@ export interface FileRouteTypes {
     | '/data-management'
     | '/forecasting'
     | '/governance'
+    | '/opex-management'
     | '/reports'
     | '/settings'
     | '/vendor-intelligence'
@@ -177,6 +188,7 @@ export interface FileRouteTypes {
     | '/data-management'
     | '/forecasting'
     | '/governance'
+    | '/opex-management'
     | '/reports'
     | '/settings'
     | '/vendor-intelligence'
@@ -193,6 +205,7 @@ export interface RootRouteChildren {
   DataManagementRoute: typeof DataManagementRoute
   ForecastingRoute: typeof ForecastingRoute
   GovernanceRoute: typeof GovernanceRoute
+  OpexManagementRoute: typeof OpexManagementRoute
   ReportsRoute: typeof ReportsRoute
   SettingsRoute: typeof SettingsRoute
   VendorIntelligenceRoute: typeof VendorIntelligenceRoute
@@ -220,6 +233,13 @@ declare module '@tanstack/react-router' {
       path: '/reports'
       fullPath: '/reports'
       preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/opex-management': {
+      id: '/opex-management'
+      path: '/opex-management'
+      fullPath: '/opex-management'
+      preLoaderRoute: typeof OpexManagementRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/governance': {
@@ -305,6 +325,7 @@ const rootRouteChildren: RootRouteChildren = {
   DataManagementRoute: DataManagementRoute,
   ForecastingRoute: ForecastingRoute,
   GovernanceRoute: GovernanceRoute,
+  OpexManagementRoute: OpexManagementRoute,
   ReportsRoute: ReportsRoute,
   SettingsRoute: SettingsRoute,
   VendorIntelligenceRoute: VendorIntelligenceRoute,
